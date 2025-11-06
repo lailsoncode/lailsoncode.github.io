@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Progressão Aritmética</title>
+</head>
+<body>
+<div id="main" class="h-screen flex items-center justify-center">
+    <form class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4" id="meuForm">
+        <div class="mb-4 ">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="n">Número de termos (n)</label>
+            <input type="number" id="n" class="shadow appearance-none border rounded w-full py-2 px-3" min="1">
+        </div>
+        <div class="mb-4 ">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="a1">Primeiro termo (a1)</label>
+            <input type="number" id="a1" class="shadow appearance-none border rounded w-full py-2 px-3">
+        </div>
+        <div class="mb-4 ">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="r">Razão (r)</label>
+            <input type="number" id="r" class="shadow appearance-none border rounded w-full py-2 px-3">
+        </div>
+        <div class="flex items-center justify-center">
+            <input type="submit" value="Gerar" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        </div>
+    </form>
+</div>
+<script>
+document.getElementById("meuForm").addEventListener("submit", function(e){
+    e.preventDefault()
+    const n = Number(document.getElementById("n").value)
+    const a1 = Number(document.getElementById("a1").value)
+    const r = Number(document.getElementById("r").value)
+    if (isNaN(n) || n <= 0) { alert("Informe n >= 1"); return }
+
+    const termos = []
+    const indices = Array.from({length: n}, (_,i) => i)
+    for (const i of indices) {
+        termos.push(a1 + i * r)
+    }
+    const soma = termos.reduce((s,x) => s + x, 0)
+
+    document.getElementById("meuForm").remove()
+    document.getElementById("main").innerHTML = `
+    <div class='min-w-80 bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4'>
+      <h1 class='font-bold'>Progressão Aritmética</h1>
+      <p>Termos: <span id="lista"></span></p>
+      <p>Soma: <strong id="soma"></strong></p>
+    </div>
+    `
+    document.getElementById("lista").textContent = termos.join(", ")
+    document.getElementById("soma").textContent = soma
+})
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>

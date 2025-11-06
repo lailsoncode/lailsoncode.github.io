@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Adivinhe o número</title>
+
+  <!-- estilo do site -->
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- box icons -->
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="logo"><span>L</span>ailson <span>X</span>erondino</a>
+
+    <ul class="navbar">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../portfolio.html">Portifólio</a></li>
+      <li><a href="#">Sobre</a></li>
+    </ul>
+
+    <div class="menu-btn">
+      <span>INTRO</span>
+      <div class="bx bx-menu" id="menu-icon"></div>
+    </div>
+  </header>
+
+  <section class="home">
+    <main style="padding:24px; max-width:900px; margin:0 auto;">
+      <div id="main" class="h-screen flex items-center justify-center">
+          <form class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4" id="meuForm">
+              <div class="mb-4 ">
+                  <p class="block text-gray-700 text-sm font-bold mb-2">Clique em iniciar para começar o jogo (1 a 100)</p>
+              </div>
+              <div class="flex items-center justify-center">
+                  <input type="submit" value="Iniciar" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              </div>
+          </form>
+      </div>
+      <script>
+      document.getElementById("meuForm").addEventListener("submit", function(e){
+          e.preventDefault()
+          const secreto = Math.floor(Math.random()*100) + 1
+          let tent = 0
+          let palpite
+          while (true) {
+              palpite = prompt("Adivinhe o número entre 1 e 100:")
+              if (palpite === null) { alert("Jogo cancelado"); break }
+              const val = Number(palpite)
+              if (isNaN(val)) { alert("Digite um número válido"); continue }
+              tent++
+              if (val === secreto) {
+                  alert(`Acertou! Número de tentativas: ${tent}`)
+                  break
+              } else if (val < secreto) {
+                  alert("Muito baixo")
+              } else {
+                  alert("Muito alto")
+              }
+          }
+
+          document.getElementById("meuForm").remove()
+          document.getElementById("main").innerHTML = `
+          <div class='min-w-80 bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4'>
+            <h1 class='font-bold'>Fim do jogo</h1>
+            <p>O número secreto era ${secreto}</p>
+          </div>
+          `
+      })
+      </script>
+      <script src="https://cdn.tailwindcss.com"></script>
+    </main>
+  </section>
+
+  <!-- mantém comportamento do menu do site -->
+  <script src="../js/script.js"></script>
+</body>
+</html>

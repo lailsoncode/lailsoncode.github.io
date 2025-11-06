@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays - Lab 04</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div id="main" class="min-h-screen flex items-center justify-center flex-col p-4 bg-gray-100">
+
+
+        <div class="bg-white shadow-xl rounded px-8 pt-6 pb-8 w-full max-w-4xl mb-8">
+            <h1 class="text-2xl font-extrabold leading-normal mb-6 text-indigo-700">Lab 04 - Mapeamento, Filtros e Reduções (Usando Loop For)</h1>
+
+            <p class="mt-4 font-bold">Variável: meuArray (Original) </p>
+            <div id="meuArray" class="bg-sky-700 shadow-md rounded p-2 m-2 h-20 flex justify-start">
+                </div>
+            
+            <hr class="my-6">
+            
+            <div id="resultadoDisplay" class="bg-yellow-100 border border-yellow-400 p-3 rounded mb-4 min-h-[4rem] text-sm">
+                Aguardando execução...
+            </div>
+
+            <p class="font-bold">Resultado (Novo Array / Strings): </p>
+            <div id="meuArrayResultado" class="bg-green-100 shadow-inner rounded p-2 m-2 h-20 flex justify-start">
+                </div>
+
+            <hr class="my-6">
+
+            <h2 class="text-lg font-semibold mb-3">Selecione uma função para executar:</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                
+                <input type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"
+                    value="dobrarNumeros (Map)" onclick="executarDobrarNumeros()">
+
+                <input type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"
+                    value="filtrarMaiores (Filter)" onclick="executarFiltrarMaioresQueDois()">
+
+                <input type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-shadow-outline"
+                    value="encontrarPrimeiro (Find)" onclick="executarEncontrarPrimeiroMaiorQueDois()">
+
+                <input type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"
+                    value="somarElementos (Reduce)" onclick="executarSomarElementos()">
+
+                <input type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"
+                    value="adicionarUm (Modifica)" onclick="executarAdicionarUm()">
+                
+                <input type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"
+                    value="criarObjetos" onclick="executarCriarObjetos()">
+                
+                <input type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"
+                    value="logarPares (ForEach)" onclick="executarLogarPares()">
+            </div>
+        </div>
+        
+        </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-br">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Q19 - Número primo</title></head>
+<body>
+<div id="main" class="h-screen flex items-center justify-center">
+    <form id="meuForm" class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="mb-4"><label for="n" class="block text-gray-700 text-sm font-bold mb-2">Número</label><input id="n" type="number" class="shadow border rounded w-full py-2 px-3" min="0"></div>
+        <div class="flex items-center justify-center"><input type="submit" value="Verificar" class="bg-blue-500 text-white font-bold py-2 px-4 rounded"></div>
+    </form>
+</div>
+<script>
+function isPrime(n){
+    if(n<2) return false
+    if(n%2===0 && n!==2) return false
+    for(let i=3;i*i<=n;i+=2) if(n%i===0) return false
+    return true
+}
+document.getElementById("meuForm").addEventListener("submit", function(e){
+    e.preventDefault()
+    const n = Math.floor(Number(document.getElementById("n").value))
+    const res = isPrime(n)
+    document.getElementById("meuForm").remove()
+    document.getElementById("main").innerHTML = `<div class='min-w-80 bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4'><p>${n} é ${res ? "" : "não "}primo.</p></div>`
+})
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>

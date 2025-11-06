@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tabuada</title>
+</head>
+<body>
+<div id="main" class="h-screen flex items-center justify-center">
+    <form class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4" id="meuForm">
+        <div class="mb-4 ">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="numero">
+              Informe um número
+            </label>
+            <input type="number" id="numero" class="shadow appearance-none border rounded w-full py-2 px-3">
+        </div>
+        <div class="flex items-center justify-center">
+            <input type="submit" value="Enviar" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        </div>
+    </form>
+</div>
+<script>
+document.getElementById("meuForm").addEventListener("submit", function(e){
+    e.preventDefault()
+    const n = Number(document.getElementById("numero").value)
+    if (isNaN(n)) { alert("Informe um número"); return }
+
+    const fatores = Array.from({length: 10}, (_,i) => i+1)
+    const linhas = []
+    for (const f of fatores) {
+        linhas.push(`${n} x ${f} = ${n * f}`)
+    }
+
+    document.getElementById("meuForm").remove()
+    document.getElementById("main").innerHTML = `
+    <div class='min-w-80 bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4'>
+      <h1 class='font-bold'>Tabuada de ${n}:</h1>
+      <pre id="resultado"></pre>
+    </div>
+    `
+    document.getElementById("resultado").textContent = linhas.join("\n")
+})
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>

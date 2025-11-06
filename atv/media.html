@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pt-br">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Q24 - Média</title></head>
+<body>
+<div id="main" class="h-screen flex items-center justify-center">
+    <form id="meuForm" class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="mb-4"><label for="lista" class="block text-gray-700 text-sm font-bold mb-2">Números (vírgula)</label><input id="lista" type="text" class="shadow border rounded w-full py-2 px-3" placeholder="ex: 1,2,3"></div>
+        <div class="flex items-center justify-center"><input type="submit" value="Calcular" class="bg-blue-500 text-white font-bold py-2 px-4 rounded"></div>
+    </form>
+</div>
+<script>
+document.getElementById("meuForm").addEventListener("submit", function(e){
+    e.preventDefault()
+    const str = document.getElementById("lista").value
+    const nums = str.split(",").map(s=>Number(s.trim())).filter(n=>!isNaN(n))
+    const media = nums.length ? nums.reduce((a,b)=>a+b,0)/nums.length : 0
+    document.getElementById("meuForm").remove()
+    document.getElementById("main").innerHTML = `<div class='min-w-80 bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4'><p>Média: ${media.toFixed(2)}</p></div>`
+})
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>
